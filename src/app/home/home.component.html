@@ -1,0 +1,88 @@
+<div class="game-wrapper">
+@if(this.loading) {
+    <div class="loader">&nbsp;</div>
+}
+<div class="jumbotron">
+@if(play) {
+    <div class="container text-center pt-3">
+        <img src="../assets/hero.png" alt="Who’s That Pokémon!?" class="hero" />
+        <p>“Who’s That Pokémon?” is a segment originally featured in the Pokémon anime series. Serving as a
+          trivia question for viewers, it typically appeared before an advert break showing a silhouette of a
+          Pokémon. Viewers were challenged to guess the identity of the Pokémon based on its outline. After
+          the adverts had concluded, the answer was revealed by showing the Pokémon’s full image and
+          stating its name.</p>
+        <button type="button" class="btn btn-primary btn-lg mb-3" (click)="this.play = false">Play!</button>
+      </div>
+      
+    <div class="container bg-3 text-center">    
+    </div>
+   
+   } @else {
+    <div class="container text-center">
+        <div class="row">
+            <h3 class="pt-3">Who’s That Pokémon?</h3>
+            <div class="col">
+              <div class="question-pokemon">
+                @if(this.imageURL) {
+                    <img 
+                      src="{{this.imageURL}}"
+                      alt="Guess the pokemon" 
+                      class="{{this.pokemonName ? 'question show' : 'question'}}"
+                    />
+                }
+              </div>
+            </div>
+            <div class="col">
+              <div class="answer-pokemon">
+                <h4 class="round">Round: <span>{{index+1}} / 10</span></h4>
+                <h4 class="points">Points: <span>{{points}}</span></h4>
+                @if(this.pokemonName) {
+                    <h4 class="pokemon-name">Name: <span>{{this.pokemonName }}</span></h4>
+                    <h4 class="pokemon-result">
+                        @if(this.correctAnswer) {
+                            <span class="correct" role="alert">Correct answer!</span>
+                        } @else {
+                            <span class="wrong" role="alert">Wrong answer! You answered <span class="uppercase">{{this.userAnswer}}</span></span>
+                        }
+                    </h4>
+                }
+              </div>
+            </div>
+          </div>
+          <div class="row mt-5">
+            @for(name of decoyNames; track name) {
+                <div class="col">
+                    <div class="d-grid gap-2 pb-3">
+                        <button 
+                            type="button" 
+                            class="btn btn-primary btn-lg uppercase" 
+                            [disabled]="this.pokemonName"
+                            (click)="checkAnswer(this.pokemonIds[this.index], name)">
+                                {{name}}
+                        </button>
+                    </div>
+                </div>
+              }
+          </div>
+          <div class="row pb-3">
+            <div class="col">
+                <div class="d-grid gap-2">
+                    <button type="button" class="btn btn-primary btn-lg uppercase" (click)="reset()">Reset</button>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-grid gap-2">
+                    <button 
+                      type="button" 
+                      class="btn btn-primary btn-lg uppercase" 
+                      [disabled]="index === 9 || !this.pokemonName" 
+                      (click)="next()">Next</button>
+                </div>
+            </div>
+          </div>
+    </div>
+   }
+
+</div>
+
+</div>
