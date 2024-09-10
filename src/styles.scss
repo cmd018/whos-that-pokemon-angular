@@ -60,9 +60,11 @@ body {
 .question-pokemon {
     img.question {
         filter: brightness(0);
+        transition: filter .5s ease-out;
     }
     img.show {
         filter: brightness(1);
+        transition: filter .5s ease-out;
     }
 }
 

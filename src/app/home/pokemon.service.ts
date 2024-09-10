@@ -28,7 +28,7 @@ export type VerifyPokemon = {
 export type RandomPokemonResponse = StandardResponse & RandomPokemon
 export type VerifyPokemonResponse = StandardResponse & VerifyPokemon
 
-export const BASE_URL = "http://localhost:8080";
+export const BASE_URL = "http://0.0.0.0:8080";
 
 @Injectable({
   providedIn: 'root'

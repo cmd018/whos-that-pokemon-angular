@@ -28,6 +28,7 @@
                       src="{{this.imageURL}}"
                       alt="Guess the pokemon" 
                       class="{{this.pokemonName ? 'question show' : 'question'}}"
+                      draggable="false"
                     />
                 }
               </div>
@@ -62,12 +63,12 @@
                         </button>
                     </div>
                 </div>
-              }
+            }
           </div>
           <div class="row pb-3">
             <div class="col">
                 <div class="d-grid gap-2">
-                    <button type="button" class="btn btn-primary btn-lg uppercase" (click)="reset()">Reset</button>
+                    <button type="button" class="btn btn-outline-primary btn-lg uppercase" (click)="reset()">Reset</button>
                 </div>
             </div>
             <div class="col">
